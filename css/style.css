@@ -615,6 +615,7 @@ nav a.active::after{
     color:var(--text-light);
     font-size:17px;
     line-height:1.9;
+    text-align:justify;
 
 }
 
@@ -835,7 +836,7 @@ nav a.active::after{
 .about-wrapper{
 
     display:grid;
-    grid-template-columns:1.2fr .8fr;
+    grid-template-columns:1.5fr .7fr;
     gap:40px;
     align-items:center;
 
@@ -853,39 +854,7 @@ nav a.active::after{
 
     color:var(--text-gray);
     text-align:justify;
-    line-height:1.9;
-
-}
-
-/* Background Glow */
-
-.about::before{
-
-    content:"";
-    position:absolute;
-    width:550px;
-    height:550px;
-    background:radial-gradient(circle,
-    rgba(56,189,248,.18),
-    transparent 70%);
-    top:-150px;
-    right:-120px;
-    pointer-events:none;
-
-}
-
-.about::after{
-
-    content:"";
-    position:absolute;
-    width:350px;
-    height:350px;
-    background:radial-gradient(circle,
-    rgba(34,211,238,.12),
-    transparent 70%);
-    left:-100px;
-    bottom:-100px;
-    pointer-events:none;
+    line-height:1.6;
 
 }
 
@@ -1174,6 +1143,7 @@ nav a.active::after{
     color:var(--text-gray);
     margin-bottom:12px;
     line-height:1.7;
+    text-align:justify;
 
 }
 
@@ -1705,11 +1675,8 @@ font-size:21px;
 .certificate-image img{
 
     width:100%;
-
     height:100%;
-
     object-fit:cover;
-
     transition:.4s;
 
 }
@@ -1717,6 +1684,48 @@ font-size:21px;
 .certificate-card:hover img{
 
     transform:scale(1.08);
+
+}
+
+.cert-link{
+
+    display:block;
+    width:100%;
+    height:100%;
+    position:relative;
+    text-decoration:none;
+
+}
+
+.cert-overlay{
+
+    position:absolute;
+    inset:0;
+    background:rgba(10,20,40,.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    transition:.3s;
+    backdrop-filter:blur(2px);
+
+}
+
+.cert-link:hover .cert-overlay{
+
+    opacity:1;
+
+}
+
+.cert-overlay span{
+
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    background:var(--primary);
+    padding:8px 18px;
+    border-radius:20px;
+    letter-spacing:.5px;
 
 }
 
@@ -1737,8 +1746,8 @@ font-size:21px;
 .certificate-content p{
 
     color:var(--text-light);
-
     margin-bottom:20px;
+    text-align:justify;
 
 }
 
