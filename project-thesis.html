@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sistem Pendingin Kontroler Motor — Logika Fuzzy</title>
+<title>ZH. | Motor Controller Cooling System</title>
+<link rel="icon" type="image/png" href="assets/logo.PNG">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -489,7 +490,10 @@
     .stat-strip{grid-template-columns:1fr;}
   }
 
-  ::selection{background:var(--accent-dim); color:#fff;}
+  ::selection{
+    background:var(--accent-dim); 
+    color:#fff;
+  }
 </style>
 </head>
 <body>
@@ -510,7 +514,7 @@
 <div class="wrap">
 
   <!-- ================= HERO ================= -->
-  <section class="hero" style="padding-bottom:0;">
+  <section class="hero" style="padding-bottom:40px;">
     <!-- <span class="eyebrow">Proyek Akhir · VE230831 · D4 Teknologi Rekayasa Otomasi ITS</span> -->
     <div class="hero-flex">
       <div class="hero-left">
@@ -553,11 +557,14 @@
         <div class="label">Highest OCPI value, indicating the best cooling performance</div>
       </div>
     </div>
+    <div style="margin-top:22px;">
+      <a class="pill" href="assets/projects/Cooling System for a Motor Controller/POMITS_Muhammad Zulfi Huda Al-haq_2040211031 v2.pdf" target="_blank" rel="noopener" style="text-decoration:none; color:var(--accent-bright); background:var(--accent-dim); border-color:var(--accent-line);"><b style="color:inherit;">Read the Paper ↗</b></a>
+    </div>
   </section>
 
   <!-- ================= PENDAHULUAN ================= -->
   <section id="pendahuluan">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Pendahuluan</h2></div>
+    <div class="sec-head"><span class="sec-num">01</span><h2>Research Background</h2></div>
     <div class="two-col">
       <div class="prose">
         <p>
@@ -602,7 +609,7 @@
 
   <!-- ================= METODOLOGI ================= -->
   <section id="metodologi">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Metodologi</h2></div>
+    <div class="sec-head"><span class="sec-num">02</span><h2>System Architecture</h2></div>
     <p class="sec-lede">
       The system consists of two main components: <strong style="color:var(--text)">a plant model</strong>
       that simulates the motor controller's heat generation using a PTC heater, and
@@ -708,7 +715,7 @@
 
   <!-- ================= HASIL ================= -->
   <section id="hasil">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Hasil &amp; Pembahasan</h2></div>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Evaluation &amp;  Analysis</h2></div>
     <p class="sec-lede">
       The prototype was experimentally evaluated through sensor validation, thermal model verification, 
       and performance testing under both normal and disturbance conditions. The proposed fuzzy logic 
@@ -829,7 +836,7 @@
 
   <!-- ================= KESIMPULAN ================= -->
   <section id="kesimpulan">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Kesimpulan</h2></div>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Performance Summary</h2></div>
     <div class="conclusion-card">
       <p>
         The proposed fuzzy logic–based cooling system maintained the motor controller within 
@@ -842,6 +849,19 @@
         stability and energy efficiency, obtaining the <strong>highest OCPI value (0.90)</strong> 
         and demonstrating reliable performance under both normal and disturbed operating conditions.
       </p>
+    </div>
+  </section>
+  
+  <!-- ================= PAPER ================= -->
+  <section id="paper" style="padding-top:0; border-top:none;">
+    <div class="callout" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px;">
+      <div>
+        <h4>Scientific Paper</h4>
+        <p style="color:var(--text-dim); font-size:0.93rem; max-width:620px; text-align:justify;">
+          The full technical write-up of this project is available as a scientific paper.
+        </p>
+      </div>
+      <a class="pill" href="assets/projects/Cooling System for a Motor Controller/POMITS_Muhammad Zulfi Huda Al-haq_2040211031 v2.pdf" target="_blank" rel="noopener" style="text-decoration:none; color:var(--accent-bright); background:var(--accent-dim); border-color:var(--accent-line);"><b style="color:inherit;">Read the Paper ↗</b></a>
     </div>
   </section>
 

@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Automatic Hi-Pot Testing Machine — PLC Control System</title>
+<title>ZH. | Automatic Hi-Pot Testing Machine — PLC Control System</title>
+<link rel="icon" type="image/png" href="assets/logo.PNG">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -449,6 +450,63 @@
     overflow-x:auto;
   }
 
+  /* ---------- Sequence Test Table ---------- */
+  table.seq-table{
+    width:100%;
+    min-width:760px;
+    border-collapse:collapse;
+    font-size:0.78rem;
+    margin:14px 0;
+  }
+  table.seq-table th, table.seq-table td{
+    text-align:center;
+    padding:7px 6px;
+    border:1px solid var(--border-soft);
+    white-space:nowrap;
+  }
+  table.seq-table thead th{
+    background:var(--surface-2);
+    color:var(--text-dim);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    font-weight:500;
+  }
+  table.seq-table td.no{
+    color:var(--text-faint);
+    font-family:'JetBrains Mono', monospace;
+    background:var(--bg-soft);
+  }
+  table.seq-table td.pass{
+    background:rgba(52,211,153,0.14);
+    color:var(--good);
+    font-weight:600;
+  }
+  table.seq-table td.fail{
+    background:rgba(242,97,122,0.16);
+    color:var(--bad);
+    font-weight:700;
+  }
+  table.seq-table td.dash{
+    color:var(--text-faint);
+  }
+  table.seq-table td.hasil-pass{
+    background:rgba(52,211,153,0.22);
+    color:var(--good);
+    font-weight:700;
+    font-family:'JetBrains Mono', monospace;
+  }
+  table.seq-table td.hasil-fail{
+    background:rgba(242,97,122,0.26);
+    color:var(--bad);
+    font-weight:700;
+    font-family:'JetBrains Mono', monospace;
+  }
+  table.seq-table tbody tr.group-start td{
+    border-top:2px solid var(--border);
+  }
+
   /* ---------- Gallery ---------- */
   .gallery{display:grid; grid-template-columns:1fr 1.4fr; gap:24px;}
   .gallery .img-card:first-child{grid-row:span 1;}
@@ -566,7 +624,7 @@
 
   <!-- ================= PENDAHULUAN ================= -->
   <section id="pendahuluan">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Pendahuluan</h2></div>
+    <div class="sec-head"><span class="sec-num">01</span><h2>Project Overview</h2></div>
     <div class="two-col">
       <div class="prose">
         <p>
@@ -614,7 +672,7 @@
 
   <!-- ================= METODOLOGI ================= -->
   <section id="metodologi">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Metodologi</h2></div>
+    <div class="sec-head"><span class="sec-num">02</span><h2>System Design & Development</h2></div>
     <p class="sec-lede">
       The system integrates three main components: a <strong style="color:var(--text)">Hi-Pot Test Unit</strong>
       (Metrel 3325) that generates the high-voltage insulation test, a
@@ -625,7 +683,7 @@
 
     <div class="flow">
       <div class="flow-step">
-        <span class="idx">01 · Site Survey &amp; Konsep</span>
+        <span class="idx">01 · Site Survey &amp; Concept</span>
         <h4>
           Site Visit &amp; Kaizen Brainstorming
         </h4>
@@ -635,7 +693,7 @@
         </p>
       </div>
       <div class="flow-step">
-        <span class="idx">02 · Perancangan Arsitektur</span>
+        <span class="idx">02 · Architectural Design</span>
         <h4>
           System Architecture Design
         </h4>
@@ -645,7 +703,7 @@
         </p>
       </div>
       <div class="flow-step">
-        <span class="idx">03 · Wiring &amp; Instalasi</span>
+        <span class="idx">03 · Wiring &amp; Installation</span>
         <h4>
           PLC &amp; Relay Wiring
         </h4>
@@ -655,7 +713,7 @@
         </p>
       </div>
       <div class="flow-step">
-        <span class="idx">04 · Trial &amp; Pengujian</span>
+        <span class="idx">04 · Trial &amp; Testing</span>
         <h4>
           Automatic Sequence Testing
         </h4>
@@ -720,7 +778,7 @@
 
   <!-- ================= HASIL ================= -->
   <section id="hasil">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Hasil &amp; Pembahasan</h2></div>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Implementation & Results</h2></div>
     <p class="sec-lede">
       The system was evaluated first on its impact on operator safety, and then on the accuracy and
       timing of the automatic Hi-Pot sequence itself, comparing the manual (before) and the automated
@@ -792,11 +850,136 @@
         <div class="foot-note">Time breakdown of one automatic Hi-Pot test cycle, from probe positioning to result reporting</div>
       </div>
     </div>
+
+    <div class="result-block">
+      <h3>System Validation Data</h3>
+      <p class="sub">
+        Full sequence-by-sequence data for all 20 trials — each row shows the reading of every one of
+        the 15 test combinations. A dash (–) marks a step that was not reached because the sequence was
+        already halted by an earlier Fail.
+      </p>
+      <div class="data-table-wrap">
+        <table class="seq-table">
+          <thead>
+            <tr>
+              <th rowspan="2">No</th>
+              <th colspan="15">Checking Sequence</th>
+              <th rowspan="2">Results</th>
+            </tr>
+            <tr>
+              <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="no">1</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td>
+              <td class="hasil-pass">Pass</td>
+            </tr>
+            <tr>
+              <td class="no">2</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td>
+              <td class="hasil-pass">Pass</td>
+            </tr>
+            <tr>
+              <td class="no">3</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td>
+              <td class="hasil-pass">Pass</td>
+            </tr>
+            <tr>
+              <td class="no">4</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td>
+              <td class="hasil-pass">Pass</td>
+            </tr>
+            <tr>
+              <td class="no">5</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td>
+              <td class="hasil-pass">Pass</td>
+            </tr>
+            <tr>
+              <td class="no">6</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td>
+              <td class="hasil-pass">Pass</td>
+            </tr>
+            <tr>
+              <td class="no">7</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td>
+              <td class="hasil-pass">Pass</td>
+            </tr>
+            <tr>
+              <td class="no">8</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td>
+              <td class="hasil-pass">Pass</td>
+            </tr>
+            <tr>
+              <td class="no">9</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td>
+              <td class="hasil-pass">Pass</td>
+            </tr>
+            <tr>
+              <td class="no">10</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td>
+              <td class="hasil-pass">Pass</td>
+            </tr>
+            <tr class="group-start">
+              <td class="no">1</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="fail">Fail</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td>
+              <td class="hasil-fail">Fail</td>
+            </tr>
+            <tr>
+              <td class="no">2</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="fail">Fail</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td>
+              <td class="hasil-fail">Fail</td>
+            </tr>
+            <tr>
+              <td class="no">3</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="fail">Fail</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td>
+              <td class="hasil-fail">Fail</td>
+            </tr>
+            <tr>
+              <td class="no">4</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="fail">Fail</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td>
+              <td class="hasil-fail">Fail</td>
+            </tr>
+            <tr>
+              <td class="no">5</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="fail">Fail</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td>
+              <td class="hasil-fail">Fail</td>
+            </tr>
+            <tr>
+              <td class="no">6</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="fail">Fail</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td>
+              <td class="hasil-fail">Fail</td>
+            </tr>
+            <tr>
+              <td class="no">7</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="fail">Fail</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td>
+              <td class="hasil-fail">Fail</td>
+            </tr>
+            <tr>
+              <td class="no">8</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="fail">Fail</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td>
+              <td class="hasil-fail">Fail</td>
+            </tr>
+            <tr>
+              <td class="no">9</td>
+              <td class="pass">Pass</td><td class="fail">Fail</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td>
+              <td class="hasil-fail">Fail</td>
+            </tr>
+            <tr>
+              <td class="no">10</td>
+              <td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="pass">Pass</td><td class="fail">Fail</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td>
+              <td class="hasil-fail">Fail</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </section>
 
   <!-- ================= KESIMPULAN ================= -->
   <section id="kesimpulan">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Kesimpulan</h2></div>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Performance Summary</h2></div>
     <div class="conclusion-card">
       <p>
         The Automatic Hi-Pot Testing Machine successfully runs the full insulation test cycle under

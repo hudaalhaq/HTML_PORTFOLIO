@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Automatic Hi-Pot Testing Machine — PLC Control System</title>
+<title>ZH. | Wireless Automatic Cut Off for N2</title>
+<link rel="icon" type="image/png" href="assets/logo.PNG">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -40,19 +41,11 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3,h4{
-    font-family:'Space Grotesk', 'Inter', sans-serif; 
-    letter-spacing:-0.01em; 
-    color:#fff;
-  }
+  h1,h2,h3,h4{font-family:'Space Grotesk', 'Inter', sans-serif; letter-spacing:-0.01em; color:#fff;}
   .mono{font-family:'JetBrains Mono', monospace;}
   a{color:var(--accent-bright);}
   img{max-width:100%; display:block;}
-  .wrap{
-    max-width:1150px; 
-    margin:0 auto; 
-    padding:0 20px;
-  }
+  .wrap{max-width:1150px; margin:0 auto; padding:0 20px;}
 
   /* ---------- NAV ---------- */
   header.site-nav{
@@ -63,23 +56,13 @@
   }
   .nav-inner{
     max-width:1280px; margin:0 auto; padding:16px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+    display:flex; align-items:center; justify-content:space-between;
   }
-  .logo{
-    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem;
-    color:#fff; letter-spacing:0.02em;
-  }
+  .logo{font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem; color:#fff; letter-spacing:0.02em;}
   .logo span{color:var(--accent);}
   nav.links{display:flex; gap:28px;}
-  nav.links a{
-    color:var(--text-dim); text-decoration:none; font-size:0.88rem; font-weight:500;
-    transition:color .15s;
-  }
-  nav.links a:hover{
-    color:var(--text);
-  }
+  nav.links a{color:var(--text-dim); text-decoration:none; font-size:0.88rem; font-weight:500; transition:color .15s;}
+  nav.links a:hover{color:var(--text);}
 
   /* ---------- HERO ---------- */
   .hero{
@@ -101,40 +84,27 @@
     margin-bottom:22px;
   }
   .eyebrow::before{
-    content:"●"; 
-    font-size:0.55rem; 
-    color:var(--good);
+    content:"●"; font-size:0.55rem; 
+    color:var(--warn);
   }
   .hero-flex{
     margin-top:10px; 
     display:flex; 
     align-items:stretch; 
-    gap:4px; 
+    gap:4px;
   }
   .hero-left{
-    flex:1;
-    min-width:0;
+    flex:1; 
+    min-width:0; 
     display:flex; 
-    flex-direction:column;
+    flex-direction:column; 
     justify-content:flex-start;
-  }
-  .hero-right{
-    flex:0 0 330px;
-    width:460px;
-    position:relative;
-    min-height:280px;
-  }
-  .hero-right .poster-frame{
-    position:absolute;
-    inset:0;
-    margin-top:0;
-    display:flex;
   }
   .hero h1{
     font-size:clamp(1.9rem, 4.2vw, 3.05rem);
     font-weight:700; 
     line-height:1.12; 
-    max-width:max-content;
+    max-width:max-content; 
     text-align:justify;
   }
   .hero h1 em{
@@ -142,11 +112,11 @@
     color:var(--accent-bright);
   }
   .hero p.lede{
-    margin-top:20px;
+    margin-top:20px; 
     color:var(--text-dim); 
     font-size:1.06rem; 
-    max-width:max-content;
-    text-align: justify;
+    max-width:max-content; 
+    text-align:justify;
   }
   .author-row{
     margin-top:28px; 
@@ -155,8 +125,12 @@
     gap:10px;
   }
   .pill{
-    font-size:0.82rem; color:var(--text-dim); background:var(--surface);
-    border:1px solid var(--border); padding:7px 14px; border-radius:100px;
+    font-size:0.82rem; 
+    color:var(--text-dim); 
+    background:var(--surface); 
+    border:1px solid var(--border); 
+    padding:7px 14px; 
+    border-radius:100px;
   }
   .pill b{
     color:var(--text); 
@@ -421,34 +395,6 @@
     color:var(--good);
   }
 
-  /* OCPI bar chart (signature element) */
-  .ocpi-panel{
-    background:var(--surface); 
-    border:1px solid var(--border); 
-    border-radius:var(--radius);
-    padding:28px 30px;
-  }
-  .ocpi-row{display:flex; align-items:center; gap:18px; margin-bottom:20px;}
-  .ocpi-row:last-child{margin-bottom:0;}
-  .ocpi-name{width:170px; font-size:0.88rem; color:var(--text-dim); flex-shrink:0;}
-  .ocpi-name b{color:var(--text); display:block; font-size:0.92rem;}
-  .ocpi-track{flex:1; background:var(--bg-soft); border-radius:8px; height:26px; position:relative; overflow:hidden; border:1px solid var(--border-soft);}
-  .ocpi-fill{height:100%; border-radius:8px; display:flex; align-items:center; justify-content:flex-end; padding-right:10px;}
-  .ocpi-fill span{font-family:'JetBrains Mono', monospace; font-size:0.78rem; color:#0a0e1a; font-weight:600;}
-  .ocpi-fill.best{background:linear-gradient(90deg, #2f8fe6, #7cbaff);}
-  .ocpi-fill.mid{background:#4a5a7a;}
-  .ocpi-fill.low{background:#37425e;}
-  .ocpi-panel .foot-note{margin-top:20px; font-size:0.8rem; color:var(--text-faint); border-top:1px solid var(--border-soft); padding-top:16px;}
-
-  .data-table-wrap{
-    background:var(--surface); 
-    border:1px solid var(--border); 
-    border-radius:var(--radius);
-    padding:6px 24px; 
-    margin-top:28px; 
-    overflow-x:auto;
-  }
-
   /* ---------- Gallery ---------- */
   .gallery{display:grid; grid-template-columns:1fr 1.4fr; gap:24px;}
   .gallery .img-card:first-child{grid-row:span 1;}
@@ -496,7 +442,6 @@
     .poster-frame img{height:auto; object-fit:contain;}
     .flow{grid-template-columns:1fr 1fr;}
     .stat-strip{grid-template-columns:1fr 1fr;}
-    .ocpi-name{width:120px; font-size:0.8rem;}
   }
   @media (max-width:520px){
     .flow{grid-template-columns:1fr;}
@@ -513,10 +458,6 @@
     <div class="logo"><span>ZH.</span> — Wireless Auto Cut-Off Nitrogen</div>
     <nav class="links">
       <a href="index.html">Home</a>
-      <!-- <a href="#pendahuluan">Pendahuluan</a>
-      <a href="#metodologi">Metodologi</a>
-      <a href="#hasil">Hasil</a>
-      <a href="#kesimpulan">Kesimpulan</a> -->
     </nav>
   </div>
 </header>
@@ -525,27 +466,297 @@
 
   <!-- ================= HERO ================= -->
   <section class="hero" style="padding-bottom:0;">
-    Wireless Auto Cut-Off Nitrogen
+    <div class="hero-flex">
+      <div class="hero-left">
+        <h1>Wireless Automatic Cut Off for <em>N2 Cooling</em> on an SMT Production Line</h1>
+        <p class="lede">
+          The N2 cooling zone on the SMT line at PT. Flextronics Technology Indonesia previously 
+          required long cable runs to connect the workpiece-detection sensor to the relay controlling 
+          the cooling supply. This project replaces that wiring with a Bluetooth-based Master–Slave 
+          system: a sensor unit detects the workpiece and wirelessly signals a relay unit to activate 
+          N2 cooling, keeping it on for as long as workpieces continue to pass, then automatically 
+          cutting it off 5 minutes after the sensor stops detecting a workpiece.
+        </p>
+        <div class="author-row">
+          <span class="pill">Wireless Bluetooth Control</span>
+          <span class="pill">Arduino Nano</span>
+          <span class="pill">Master–Slave System</span>
+          <span class="pill">SMT Line Automation</span>
+        </div>
+      </div>
+    </div>
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="num">12 m</div>
+        <div class="label">Bluetooth connectivity range between Master and Slave unit</div>
+      </div>
+      <div class="stat">
+        <div class="num">5 min</div>
+        <div class="label">N2 cooling hold time after a workpiece is detected</div>
+      </div>
+      <div class="stat">
+        <div class="num">1:1</div>
+        <div class="label">Master–Slave pairing per Bluetooth link</div>
+      </div>
+      <div class="stat">
+        <div class="num">Wireless</div>
+        <div class="label">No cable run between the sensor point and the relay point</div>
+      </div>
+    </div>
   </section>
 
   <!-- ================= PENDAHULUAN ================= -->
   <section id="pendahuluan">
-    
+    <div class="sec-head"><span class="sec-num">01</span><h2>Project Overview</h2></div>
+    <div class="two-col">
+      <div class="prose">
+        <p>
+          On the SMT (Surface Mount Technology) assembly line at PT. Flextronics Technology Indonesia,
+          the N2 (nitrogen) cooling zone sits downstream of the reflow oven, positioned between several
+          machine modules along the line. Controlling this cooling stage conventionally means running a
+          hard-wired connection from the workpiece-detection point to the relay that switches the N2
+          supply — a cable path that has to cross multiple machine modules along the line.
+        </p>
+        <p>
+          This project replaces that hard-wired connection with a <strong>wireless Master–Slave system</strong>.
+          A <strong>Master</strong> unit, fitted with a photoelectric sensor, detects each workpiece passing
+          through the line and sends a signal over <strong>Bluetooth (HC-05)</strong> to a <strong>Slave</strong>
+          unit positioned at the N2 relay point, up to 12 meters away. The Slave then activates the N2 cooling 
+          relay for as long as workpieces keep passing, and automatically switches it off 5 minutes after the 
+          sensor no longer detects a workpiece.
+        </p>
+        <p>
+          Each unit is built as a self-contained box with its own Arduino Nano, OLED status display, and
+          Bluetooth module, so the sensor point and the relay point no longer need to be physically wired
+          together across the machine line.
+        </p>
+        <p>
+          By eliminating long signal-cable routing across multiple SMT modules, the system reduces
+          installation complexity, simplifies maintenance activities, and allows flexible deployment
+          without modifying the existing production line infrastructure.
+        </p>
+      </div>
+      <div class="callout">
+        <h4>Problem Statement</h4>
+        <ul>
+          <li>
+            How can the N2 cooling relay be triggered from a workpiece-detection sensor located several
+            meters away, without running a signal cable across the SMT machine line?
+          </li>
+          <li>
+            How can the sensor unit reliably transmit detection signals and control timing functions over 
+            a wireless communication link?
+          </li>
+        </ul>
+        <br>
+        <h4>Objectives</h4>
+        <ul>
+          <li>
+            Develop and implement a Bluetooth-based Master–Slave control system that automatically activates 
+            and deactivates N2 cooling according to workpiece detection events within an SMT production environment
+          </li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <!-- ================= METODOLOGI ================= -->
   <section id="metodologi">
-    
+    <div class="sec-head"><span class="sec-num">02</span><h2>System Architecture</h2></div>
+    <p class="sec-lede">
+      The system pairs a <strong style="color:var(--text)">Master</strong> unit that senses the workpiece
+      with a <strong style="color:var(--text)">Slave</strong> unit that switches the N2 cooling relay,
+      linked over a <strong style="color:var(--text)">Bluetooth HC-05</strong> connection with a range of
+      up to 12 meters — removing the need for a wired connection across the SMT line.
+    </p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <span class="idx">01 · Production Line Analysis</span>
+        <h4>Line Survey &amp; Concept</h4>
+        <p>
+          Studying the SMT line layout to map the distance and machine modules between the workpiece
+          detection point and the N2 relay point.
+        </p>
+      </div>
+      <div class="flow-step">
+        <span class="idx">02 · Electrical Design</span>
+        <h4>Master &amp; Slave Circuit Design</h4>
+        <p>
+          Designing the Master (sensor + Bluetooth) and Slave (relay + Bluetooth) circuits, including the
+          PC817 optocoupler isolation between the 12V logic and 24V sensor supply on the Master unit.
+        </p>
+      </div>
+      <div class="flow-step">
+        <span class="idx">03 · Mechanical Design</span>
+        <h4>Enclosure Design</h4>
+        <p>
+          Designing a CAD enclosure for the Master and Slave boxes to house the Arduino Nano, OLED
+          display, and Bluetooth module for installation on the production floor.
+        </p>
+      </div>
+      <div class="flow-step">
+        <span class="idx">04 · Firmware Development &amp; Validation</span>
+        <h4>Firmware &amp; Wireless Testing</h4>
+        <p>
+          Programming the Master–Slave handshake logic on both Arduino Nano boards and validating the
+          detection-to-cutoff sequence at production-floor distance.
+        </p>
+      </div>
+    </div>
+
+    <div class="method-grid">
+      <div class="stack">
+        <div class="img-card">
+          <img src="assets/projects/Wireless Auto Cut Off N2/connection with smt machine.PNG" alt="Integrasi Wireless Automatic Cut Off N2 pada SMT Line">
+          <div class="cap">Master unit installed at the sensor point and Slave unit at the N2 relay point along the SMT line, linked wirelessly over Bluetooth</div>
+        </div>
+        <div class="callout">
+          <h4>Hardware Components</h4>
+          <ul>            
+            <li><strong>Arduino Nano</strong> – Main controller (Master & Slave)</li>
+            <li><strong>Bluetooth Module HC-05</strong> – Wireless Master–Slave communication</li>
+            <li><strong>Photoelectric Sensor</strong> – Workpiece detection</li>
+            <li><strong>Relay</strong> – N2 automatic cooling switching</li>
+            <li><strong>OLED Display</strong> – Visual status monitoring</li>
+          </ul>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="callout">
+          <h4>Master Unit — Sensor Side</h4>
+          <ul>
+            <li>Powered by 12V DC from the adapter, stepped up to 24V DC (XL6009) for the sensor supply</li>
+            <li>An <strong>Optocoupler PC817</strong> isolates the 24V sensor circuit from the 12V Arduino logic</li>
+            <li>Consists of an Arduino Nano, BT HC-05, OLED display, and the photoelectric sensor input</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <h4>Slave Unit — Relay Side</h4>
+          <ul>
+            <li>Powered by 12V DC directly from the adapter</li>
+            <li>Consists of an Arduino Nano, BT HC-05, OLED display, and the relay</li>
+            <li>The relay's <strong>NC (Normally Closed)</strong> contact switches the N2 cooling supply</li>
+          </ul>
+          <div class="rule-badges" style="justify-content:flex-start; margin-top:16px;">
+            <span class="rule-badge">Default → <b>OFF</b></span>
+            <span class="rule-badge">Trigger → <b>Bluetooth Signal Received</b></span>
+            <span class="rule-badge">Stays ON → <b>While Detecting</b></span>
+            <span class="rule-badge">Off-Delay → <b>5 Min After Last Detection</b></span>
+            <span class="rule-badge">Output → <b>N2 Cooling Relay</b></span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ================= HASIL ================= -->
   <section id="hasil">
-    
+    <div class="sec-head"><span class="sec-num">03</span><h2>Implementation Results</h2></div>
+    <p class="sec-lede">
+      The Master and Slave enclosures were designed and built to house each unit's electronics for
+      installation on the production floor, and the complete system was validated end-to-end from
+      workpiece detection to automatic N2 cut-off.
+    </p>
+
+    <div class="result-block">
+      <h3>Enclosure Design</h3>
+      <p class="sub">
+        Each unit — Master and Slave — is housed in its own CAD-designed enclosure, sized to fit the
+        Arduino Nano, OLED display, Bluetooth module, and power circuitry, with a dedicated DC jack port
+        for power input, while keeping a compact footprint for installation in the limited space between
+        machine modules along the SMT line.
+      </p>
+      <div class="method-grid">
+        <div class="img-card">
+          <img src="assets/projects/Wireless Auto Cut Off N2/cad_box_master.PNG" alt="Desain CAD Box Master">
+          <div class="cap">CAD design of the Master unit enclosure</div>
+        </div>
+        <div class="img-card">
+          <img src="assets/projects/Wireless Auto Cut Off N2/cad_box_slave.PNG" alt="Desain CAD Box Slave">
+          <div class="cap">CAD design of the Slave unit enclosure</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-block">
+      <h3>Wireless Detection-to-Cutoff Sequence</h3>
+      <p class="sub">
+        Once the Master's photoelectric sensor detects a workpiece passing through, it sends an activation
+        signal over Bluetooth to the Slave, which immediately closes the relay to switch on N2 cooling.
+        The relay stays on for as long as workpieces continue to be detected, and only starts its
+        <strong style="color:var(--text)">5 minutes off-delay</strong> once the sensor no longer detects 
+        a workpiece — removing the need for an operator or a wired signal path between the two points 
+        along the line.
+      </p>
+      <div class="stack">
+        <div class="callout">
+          <div class="rule-badges" style="justify-content:flex-start; gap:10px;">
+            <span class="rule-badge">Sensor Detects Workpiece</span>
+            <span class="rule-badge">→ Master Sends Bluetooth Command</span>
+            <span class="rule-badge">→ Slave Activates Relay</span>
+            <span class="rule-badge">→ <b>N2 Cooling ON</b></span>
+            <span class="rule-badge">→ Workpiece No Longer Detected</span>
+            <span class="rule-badge">→ 5-Min Off-Delay Timer Starts</span>
+            <span class="rule-badge">→ <b>Relay OFF</b></span>
+          </div>
+        </div>
+        <div class="data-table-wrap" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:6px 24px; margin-top:0;">
+          <table class="spec">
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td class="k">Wireless Link</td><td>Bluetooth HC-05, Master ↔ Slave</td></tr>
+            <tr><td class="k">Max. Connectivity Range</td><td>12 m</td></tr>
+            <tr><td class="k">N2 Cooling Off-Delay</td><td>5 minutes after last detection</td></tr>
+            <tr><td class="k">Pairing</td><td>1 Master : 1 Slave</td></tr>
+            <tr><td class="k">Detection Trigger</td><td>Photoelectric sensor</td></tr>
+            <tr><td class="k">Relay Response</td><td>Successful activation on each detection</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="result-block">
+      <h3>Communication & Functional Validation</h3>
+      <p class="sub">
+        The Bluetooth link between the Master and Slave units remained stable at the intended installation 
+        distance along the SMT line, up to 12 meters. Each workpiece detection event correctly triggered 
+        N2 cooling activation, and the relay reliably cut off 5 minutes after the sensor stopped detecting 
+        a workpiece, confirming that the wireless handoff between the sensor unit and the relay unit operates 
+        reliably without a hard-wired connection.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= ENGINEERING OUTCOMES ================= -->
+  <section id="outcomes">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Engineering Outcomes</h2></div>
+    <div class="callout">
+      <ul>
+        <li>Eliminated long-distance signal cable routing between the sensor location and the relay location</li>
+        <li>Reduced installation complexity across multiple SMT machine modules</li>
+        <li>Enabled flexible placement of the sensing and relay units without modifying existing line infrastructure</li>
+        <li>Improved maintainability through a modular Master–Slave architecture</li>
+        <li>DValidated reliable wireless triggering and automatic N2 cooling control over a 12-meter operating distance</li>
+      </ul>
+    </div>
   </section>
 
   <!-- ================= KESIMPULAN ================= -->
   <section id="kesimpulan">
-    
+    <div class="sec-head"><span class="sec-num">04</span><h2>Project Impact</h2></div>
+    <div class="conclusion-card">
+      <p>
+        The Wireless Automatic Cut Off for N2 system successfully replaces a hard-wired sensor-to-relay 
+        connection on the SMT line with a Bluetooth-based Master–Slave link, reliably activating N2 cooling 
+        on workpiece detection and cutting it off automatically <strong>5-minute after</strong> the sensor 
+        no longer detects a workpiece, over a connectivity range of up to <strong>12 meters</strong>.
+      </p>
+      <p>
+        By isolating the Master unit's sensor supply from its logic circuit with a PC817 optocoupler and
+        packaging both units in dedicated CAD-designed enclosures, the system delivers a modular,
+        cable-free installation that can be positioned independently at the detection point and the relay
+        point along the production line.
+      </p>
+    </div>
   </section>
 
   <footer>

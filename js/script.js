@@ -244,159 +244,142 @@ topButton.onclick=()=>{
 }
 
 /* ===========================
-    PROJECT CAROUSEL
+    MOBILE NAVIGATION (rebuilt)
 =========================== */
- 
-(function(){
- 
-    const track = document.getElementById("carouselTrack");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const dotsContainer = document.getElementById("carouselDots");
- 
-    if(!track) return;
- 
-    const cards = track.querySelectorAll(".project-card");
-    const total = cards.length;
-    const visible = 3;
-    const maxIndex = total - visible;
-    let current = 0;
- 
-    // Buat dots
-    for(let i = 0; i <= maxIndex; i++){
-        const dot = document.createElement("span");
-        dot.classList.add("dot");
-        if(i === 0) dot.classList.add("active");
-        dot.addEventListener("click", () => goTo(i));
-        dotsContainer.appendChild(dot);
-    }
- 
-    function getCardWidth(){
-        const card = cards[0];
-        const style = getComputedStyle(track);
-        const gap = parseFloat(style.gap) || 30;
-        return card.offsetWidth + gap;
-    }
- 
-    function goTo(index){
-        current = Math.max(0, Math.min(index, maxIndex));
-        track.style.transform = `translateX(-${current * getCardWidth()}px)`;
-        prevBtn.disabled = current === 0;
-        nextBtn.disabled = current === maxIndex;
-        document.querySelectorAll(".carousel-dots .dot").forEach((d,i) => {
-            d.classList.toggle("active", i === current);
-        });
-    }
- 
-    prevBtn.addEventListener("click", () => goTo(current - 1));
-    nextBtn.addEventListener("click", () => goTo(current + 1));
- 
-    // Touch/swipe support
-    let startX = 0;
-    track.addEventListener("touchstart", e => { startX = e.touches[0].clientX; }, {passive:true});
-    track.addEventListener("touchend", e => {
-        const diff = startX - e.changedTouches[0].clientX;
-        if(Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+
+const navToggle = document.querySelector(".menu-toggle");
+const mainNav = document.querySelector("nav");
+
+if(navToggle && mainNav){
+
+    const navBackdrop = document.createElement("div");
+    navBackdrop.className = "nav-backdrop";
+    document.body.appendChild(navBackdrop);
+
+    const navIcon = navToggle.querySelector("i");
+
+    const openNav = () => {
+        mainNav.classList.add("nav-open");
+        navBackdrop.classList.add("show");
+        navIcon.classList.remove("fa-bars");
+        navIcon.classList.add("fa-xmark");
+        document.body.style.overflow = "hidden";
+    };
+
+    const closeNav = () => {
+        mainNav.classList.remove("nav-open");
+        navBackdrop.classList.remove("show");
+        navIcon.classList.remove("fa-xmark");
+        navIcon.classList.add("fa-bars");
+        document.body.style.overflow = "";
+    };
+
+    navToggle.addEventListener("click", () => {
+        mainNav.classList.contains("nav-open") ? closeNav() : openNav();
     });
- 
-    goTo(0);
- 
-})();
+
+    navBackdrop.addEventListener("click", closeNav);
+
+    mainNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeNav);
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if(e.key === "Escape") closeNav();
+    });
+
+    window.addEventListener("resize", () => {
+        if(window.innerWidth > 1024) closeNav();
+    });
+
+}
 
 /* ===========================
-    PROJECT CAROUSEL
+    FEATURED PROJECTS CAROUSEL
+    Satu logic native-scroll untuk semua ukuran layar.
+    Beda hanya jumlah kartu yang digeser tiap klik next/prev:
+    - Desktop (>=1025px): 3 kartu sekaligus (karena tampil 3 per baris)
+    - Mobile/Tablet: 1 kartu
 =========================== */
- 
-(function(){
- 
-    const track = document.getElementById("carouselTrack");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const dotsContainer = document.getElementById("carouselDots");
- 
-    if(!track) return;
- 
-    const cards = track.querySelectorAll(".project-card");
-    const total = cards.length;
-    let current = 0;
-    let maxIndex = 0;
- 
-    const container = track.parentElement;
- 
-    function getCardWidth(){
-        const gap = parseFloat(getComputedStyle(track).gap) || 24;
-        return cards[0].offsetWidth + gap;
-    }
- 
-    function getVisible(){
-        const containerW = container.offsetWidth;
-        const cardW = getCardWidth();
-        return Math.round(containerW / cardW);
-    }
- 
-    function buildDots(){
-        dotsContainer.innerHTML = "";
-        const visible = getVisible();
-        maxIndex = Math.max(0, total - visible);
-        for(let i = 0; i <= maxIndex; i++){
-            const dot = document.createElement("span");
-            dot.classList.add("dot");
-            dot.addEventListener("click", () => goTo(i));
-            dotsContainer.appendChild(dot);
-        }
-    }
- 
-    function updateMask(idx){
-        const atFirst = idx === 0;
-        const atLast  = idx === maxIndex;
-        let mask;
-        if(atFirst && atLast){
-            mask = "none";
-        } else if(atFirst){
-            mask = "linear-gradient(to right, black 0%, black 88%, transparent 100%)";
-        } else if(atLast){
-            mask = "linear-gradient(to right, transparent 0%, black 12%, black 100%)";
-        } else {
-            mask = "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)";
-        }
-        container.style.webkitMaskImage = mask;
-        container.style.maskImage = mask;
-    }
- 
-    function goTo(index){
-        current = Math.max(0, Math.min(index, maxIndex));
-        track.style.transform = `translateX(-${current * getCardWidth()}px)`;
-        prevBtn.disabled = current === 0;
-        nextBtn.disabled = current === maxIndex;
-        document.querySelectorAll(".carousel-dots .dot").forEach((d,i) => {
-            d.classList.toggle("active", i === current);
+
+const carouselTrack = document.getElementById("carouselTrack");
+const carouselPrev = document.getElementById("prevBtn");
+const carouselNext = document.getElementById("nextBtn");
+const carouselDotsWrap = document.getElementById("carouselDots");
+const carouselWrapper = document.querySelector(".carousel-wrapper");
+
+if(carouselTrack && carouselDotsWrap && carouselWrapper){
+
+    const slides = Array.from(carouselTrack.children);
+
+    slides.forEach((_, i) => {
+        const dot = document.createElement("span");
+        if(i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => {
+            slides[i].scrollIntoView({behavior:"smooth", inline:"start", block:"nearest"});
         });
-        updateMask(current);
-    }
- 
-    prevBtn.addEventListener("click", () => goTo(current - 1));
-    nextBtn.addEventListener("click", () => goTo(current + 1));
- 
-    // Touch/swipe support
-    let startX = 0;
-    track.addEventListener("touchstart", e => { startX = e.touches[0].clientX; }, {passive:true});
-    track.addEventListener("touchend", e => {
-        const diff = startX - e.changedTouches[0].clientX;
-        if(Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+        carouselDotsWrap.appendChild(dot);
     });
- 
-    // Recalculate on resize
-    let resizeTimer;
+
+    const dots = Array.from(carouselDotsWrap.children);
+
+    const getCardStep = () => {
+        const gap = parseFloat(getComputedStyle(carouselTrack).gap) || 0;
+        return slides[0].getBoundingClientRect().width + gap;
+    };
+
+    const scrollByCards = (dir) => {
+        const distance = getCardStep();
+        carouselTrack.scrollBy({left: dir * distance, behavior:"smooth"});
+    };
+
+    if(carouselPrev) carouselPrev.addEventListener("click", () => scrollByCards(-1));
+    if(carouselNext) carouselNext.addEventListener("click", () => scrollByCards(1));
+
+    const syncActiveDot = () => {
+        const maxScroll = carouselTrack.scrollWidth - carouselTrack.clientWidth;
+        const scrollLeft = carouselTrack.scrollLeft;
+
+        let activeIndex;
+
+        if(scrollLeft >= maxScroll - 4){
+            activeIndex = slides.length - 1;
+        } else if(scrollLeft <= 4){
+            activeIndex = 0;
+        } else {
+            const trackLeft = carouselTrack.getBoundingClientRect().left;
+            let closestDistance = Infinity;
+            activeIndex = 0;
+            slides.forEach((slide, i) => {
+                const distance = Math.abs(slide.getBoundingClientRect().left - trackLeft);
+                if(distance < closestDistance){
+                    closestDistance = distance;
+                    activeIndex = i;
+                }
+            });
+        }
+
+        dots.forEach(d => d.classList.remove("active"));
+        if(dots[activeIndex]) dots[activeIndex].classList.add("active");
+
+        carouselWrapper.classList.toggle("at-start", scrollLeft <= 4);
+        carouselWrapper.classList.toggle("at-end", scrollLeft >= maxScroll - 4);
+
+        if(carouselPrev) carouselPrev.disabled = scrollLeft <= 4;
+        if(carouselNext) carouselNext.disabled = scrollLeft >= maxScroll - 4;
+    };
+
+    let scrollTimer;
+    carouselTrack.addEventListener("scroll", () => {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(syncActiveDot, 100);
+    });
+
     window.addEventListener("resize", () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            buildDots();
-            goTo(Math.min(current, maxIndex));
-        }, 150);
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(syncActiveDot, 150);
     });
- 
-    // Init
-    buildDots();
-    goTo(0);
- 
-})();
+
+    syncActiveDot();
+
+}
